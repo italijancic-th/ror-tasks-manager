@@ -11,7 +11,7 @@
 
 We have several ways in order to specify a route
 
-- `get “main/index”` —> In this case the controller and action name, must be the same as the route
+- `get “main/index”`: In this case the controller and action name, must be the same as the route
 - `match “main/index”, to: “main#index”, via: :get`: Long way
 - `match “tasks/I:id”, to: “task#show”, via: :get`: Parametric route
 - `root "main#index"`: To define root route
@@ -81,4 +81,39 @@ We can generate migrations from **models generations**:
       - `rails db:migrate VERSION=20230222182956` to restore to some particular migration ID state (timestamping)
 
 ## Active Record
+- Design pattern for relational databases
+- Retrieve and manipulate data as objects, not as statics rows
+- **Active records Objects** are **Intelligent:**
+  - Understand the structure of the table
+  - Contain data from table rows
+  - Know how te create, read, update, and delete rows
+  - Add complex functionality
+  - Can be manipulated as objects, then saved easily
 
+## Record and Update technics
+1. Find + Save:
+   - `Find` record and create a new instance
+   - `Set` values on instance
+   - `Save` instance variable on DB
+2. Find + Update:
+   - Find record
+   - Set values and save
+
+## Delete records:
+Is a two steps process:
+1. Find the record and save in an instance variable
+2. Call `destroy method`: `model_name.destroy`
+
+## Query conditions
+- `Task.where(completed: false)`
+- `Task.where('completed = 0 AND position < 10')`
+- **NEVER USE** an interpolate string in a query: Can create a vulnerability for SQL injection!
+  - `Task.where('first_name LIKE #{@query}')`
+  - Instead use: `Task.where(['first_name LIKE ?', @query])`
+- **Find first:**
+  - `Task.where(visible: true).first`
+- `Task.find_by(visible: true)`
+- **NOTE:** This methods will always return and object or `nil`.
+- **Order:** `Task.order('opsition ASC')`
+- **Limit:** `Task.limit(20)`
+- **Combination:** `Task.where(completed: true).order(:position).limit(5).offset(10)`
