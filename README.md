@@ -17,3 +17,17 @@ We have several ways in order to specify a route
 - `root "main#index"`: To define root route
 - `match "/", to: "main#index", via: :get`
 
+### Parametric routes paths
+#### Accessing Parameters inside a controller
+We can access parameters as they are key on a Ruby hash:
+- `params[:id]`
+- `params['id']`
+
+## Variables vs Instance variables
+- A regular variable has scope inside a particular action
+- An instance variable `@var_name` has scope throught an entire class and is available in all method in the class.
+- We use instance variables `@var_name` to past data from controller to a view.
+
+
+
+
