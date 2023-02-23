@@ -1,13 +1,28 @@
 <%= link_to 'Home', main_index_path %>
 
-<h1>Tasks#index</h1>
+<div>
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Task</th>
+      <th>Completed</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
 
-<% if @page == '1' %>
-  <h2> Page <%= @page %></h2>
-<% end %>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.position %></td>
+        <td><%= task.name %></td>
+        <td><%= task.completed? ? 'Yes' : 'No' %></td>
+        <td><%= task.category&.name || '-' %></td>
+        <td><%= task.position %>
+          <%= link_to('Show', task_path(task.id)) %>
+          <%= link_to('Edit', edit_task_path(task.id)) %>
+          <%= link_to('Delete', delete_task_path(task.id)) %>
+        </td>
+      </tr>
+    <% end %>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li> <%= task %> </li>
-  <% end %>
-</ul>
+  </table>
+</div>

@@ -1,14 +1,34 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'main#index'
+  get 'main/index'
   match '/about', to: 'main#about', via: :get
   match '/hello', to: 'main#hello', via: :get
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get 'main/index'
+  resources :categories do
+    member do
+      get :delete
+    end
+  end
 
-  get 'tasks/index'
-  get 'tasks/new'
-  get 'tasks/edit'
+  resources :tasks do
+    member do
+      get :delete
+    end
+  end
 
+  # get 'categories/index'
+  # get 'categories/show'
+  # get 'categories/new'
+  # get 'categories/edit'
+  # get 'categories/delete'
+  #
+  # get 'tasks/index'
+  # get 'tasks/new'
+  # post 'tasks/create'
+  # get 'tasks/edit'
+  # get 'tasks/show'
+  # get 'tasks/delete'
 end

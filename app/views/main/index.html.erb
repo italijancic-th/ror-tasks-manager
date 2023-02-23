@@ -2,6 +2,6 @@
 
 <p>This is an application to managing a to do list.</p>
 
-<%= link_to('Tasks List', {controller: 'tasks', action: 'index', page: 1}) %>
-
+<%= link_to('Tasks List', task_path(1)) %>
+<%= link_to('Categories', categories_path) %>
 <%= link_to('About', {controller: 'main', action: 'about', page: 5, id: 20}) %>

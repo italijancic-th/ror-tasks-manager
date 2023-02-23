@@ -1,11 +1,8 @@
-# frozen_string_literal: true
-class TasksController < ApplicationController
+class CategoriesController < ApplicationController
   def index
-    @tasks = Task.order(:position)
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
