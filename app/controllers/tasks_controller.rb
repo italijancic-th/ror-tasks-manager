@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+# Tasks controller class
 class TasksController < ApplicationController
   def index
     @tasks = Task.order(:position)
@@ -32,6 +34,7 @@ class TasksController < ApplicationController
       render('new')
     end
   end
+
   def edit
     @task = Task.find(params[:id])
   end
@@ -46,9 +49,13 @@ class TasksController < ApplicationController
   end
 
   def delete
+    @task = Task.find(params[:id])
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path
   end
 
   private
