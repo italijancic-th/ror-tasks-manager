@@ -194,3 +194,8 @@ Rails helpers to made easy our job in order to create forms for create or edit a
 - Form inputs are easier and more consistent
 - Fields are pre-populated with objects attributes
 - Form action/method check `object.new_record?`
+
+## Partials
+- Better code organization
+- Don't repeat yourself
+- Partials are partial templates

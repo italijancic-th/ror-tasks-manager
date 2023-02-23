@@ -33,22 +33,27 @@ class TasksController < ApplicationController
     end
   end
   def edit
+    @task = Task.find(params[:id])
   end
 
   def update
-
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to tasks_path(@task)
+    else
+      render('edit')
+    end
   end
 
   def delete
-
   end
 
   def destroy
-
   end
 
   private
 
+  # Provate function to parse data from forms
   def task_params
     params.required(:task).permit(:name, :position, :completed, :description)
   end
