@@ -1,9 +1,9 @@
-<%= link_to("Back to List", tasks_path) %>
+<%= link_to('Back to List', tasks_path) %>
 
-<div>
+<div class='tasks show'>
   <h2>Show task</h2>
 
-  <div class="actions">
+  <div class='actions'>
     <%= link_to('Edit', edit_task_path(@task.id)) %>
     <%= link_to('Delete', delete_task_path(@task.id)) %>
   </div>

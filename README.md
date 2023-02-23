@@ -188,3 +188,9 @@ end
   tasks_path(5)
 ```
 
+## Form Helpers
+Rails helpers to made easy our job in order to create forms for create or edit a resource.
+- Form parameters are grouped
+- Form inputs are easier and more consistent
+- Fields are pre-populated with objects attributes
+- Form action/method check `object.new_record?`

@@ -1,6 +1,10 @@
 <%= link_to 'Home', main_index_path %>
 
-<div>
+<div class='tasks index'>
+  <h2> Tasks </h2>
+
+  <%= link_to('Add new Task', new_task_path) %>
+
   <table>
     <tr>
       <th>#</th>
@@ -16,7 +20,7 @@
         <td><%= task.name %></td>
         <td><%= task.completed? ? 'Yes' : 'No' %></td>
         <td><%= task.category&.name || '-' %></td>
-        <td><%= task.position %>
+        <td class='actions'><%= task.position %>
           <%= link_to('Show', task_path(task.id)) %>
           <%= link_to('Edit', edit_task_path(task.id)) %>
           <%= link_to('Delete', delete_task_path(task.id)) %>
