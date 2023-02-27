@@ -1,11 +1,18 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'main#index'
   get 'main/index'
-  match '/about', to: 'main#about', via: :get
-  match '/hello', to: 'main#hello', via: :get
+  get '/about', to: 'main#about'
+  get '/hello', to: 'main#hello'
+
+  get '/login', to: 'access#new'
+  get '/logout', to: 'access#destroy'
+
+  resource :access, controller: 'access', only: [:new, :create, :destroy] do
+    member do
+      get :menu
+    end
+  end
 
   resources :categories do
     member do
@@ -19,16 +26,4 @@ Rails.application.routes.draw do
     end
   end
 
-  # get 'categories/index'
-  # get 'categories/show'
-  # get 'categories/new'
-  # get 'categories/edit'
-  # get 'categories/delete'
-  #
-  # get 'tasks/index'
-  # get 'tasks/new'
-  # post 'tasks/create'
-  # get 'tasks/edit'
-  # get 'tasks/show'
-  # get 'tasks/delete'
 end

@@ -199,3 +199,73 @@ Rails helpers to made easy our job in order to create forms for create or edit a
 - Better code organization
 - Don't repeat yourself
 - Partials are partial templates
+
+# Controller and Views Course
+## Cookies
+### Set a Cookie
+To set a cookie inside a controller code, you must to work with Ruby hash data type:
+
+```ruby
+cookies[:username] = 'itlaijancic'
+
+# You can wor with simple string or even with objects
+
+cookies[:username] = { 
+        value: 'itlaijancic',
+        expires: 1.week.from_now }
+```
+
+### Reading a cookie
+
+```ruby
+# Example for read a cookie and assign to an instance variable
+@username = cookies[:username]
+```
+
+### Limitations of cookies
+- Maximun data size: 4k (about 4.000 characters)
+- Do not store model instances inside a cookies, they used to be to large
+- Reside on te user's computers
+- Can be reade, deleted, or altered **So don't store sensitive data in cookies**
+
+# Sessions
+- Web servers sends a sessions ID to the browser, which then saves it in a cookie
+- Browser sends session ID with each feature request to that web server
+- Web server uses session ID to locate the session file
+
+## Set and read session data
+```ruby
+# Set a session value
+session[:language] = 'en'
+
+# Read a sesion value
+@language = session[:language]
+```
+
+## Limitations of sessions
+- Requires time to retrieve the session file
+- Session files accumulate on server
+- Sessions cookies resides on the user's computer
+- Session cookie can be deleted or hijacked
+
+## Session storage estrategies
+- File storage `(:file_store)`
+- Database storage `(:active_record_store)`
+- Cache storage `(:cache_store)`
+- Cookie storage `(:cookie_store)`
+
+### Session cookie storage: default ruby setting
+- Stored in each user's browser
+- Encrypted and digitally signed
+- Fast, no lookup needed
+- No file or database load
+- **Limitation:** 4K maximum size
+
+## Session Configuration
+Rails by default config sessions file for us:
+- `config/master.key` key to encrypt data on cookies
+- `config/credentials.yml.enc`
+- This config files include data to encrypt and digitally sign cookies
+- Keep master key secret (listed in .gitignore by default)
+
+
