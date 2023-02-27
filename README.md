@@ -428,4 +428,28 @@ Or rails helpers
 - `pluralize`
 - 
 
+# Models and associations
+## Smart models by design
+- `Fat model, skinny controller`
+- Move most business logic to models
+- Define instance methods for things and instance of class should "_know_"
+- Models can leverage attributes and associations
+
+## Named Scopes
+- Commonly-used queries defined in a model
+- Defined using built-in query methods
+- Use a lambda function, a block of code for a later use
+
+## Instance Attributes
+Types:
+- `attr_reader`
+- `attr_writer`
+- `attr_accessor`
+Characteristics:
+- Attributes are methods to access values of `Active records objects`
+- Useful for setting temporary states in object
+- Values will not be stored in database
+- Can affect the values and behaviors of the methods
+
+## Validations
 
