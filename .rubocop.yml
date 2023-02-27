@@ -92,6 +92,9 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 9
 
+Style/GuardClause:
+  Enabled: false
+
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
@@ -104,33 +107,14 @@ Style/ClassAndModuleChildren:
 # Offense count: 15
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/controllers/categories_controller.rb'
-    - 'app/controllers/main_controller.rb'
-    - 'app/helpers/access_helper.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/categories_helper.rb'
-    - 'app/helpers/main_helper.rb'
-    - 'app/helpers/tasks_helper.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'app/models/category.rb'
-    - 'app/models/task.rb'
-    - 'config/application.rb'
-    - 'db/migrate/20230222182956_create_tasks.rb'
-    - 'db/migrate/20230222235248_create_categories.rb'
-    - 'db/migrate/20230222235323_add_category_id_to_task.rb'
+  Enabled: false
 
 # Offense count: 9
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: compact, expanded
 Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/categories_controller.rb'
-    - 'app/controllers/main_controller.rb'
+  Enabled: false
 
 # Offense count: 49
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -148,8 +132,7 @@ Style/GlobalStdStream:
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
 Style/IfUnlessModifier:
-  Exclude:
-    - 'bin/bundle'
+  Enabled: false
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
@@ -183,7 +166,7 @@ Style/SpecialGlobalVars:
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

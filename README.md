@@ -285,5 +285,37 @@ flash[:error] = 'Category could not be found.'
 flash[:alert] = 'Not enough access privileges.'
 ```
 
+# Log: for server and application
+## Logs Files
+The log files are in the application root, inside log folder:
+- log/development.log
+- log/production.log
+- log/test.log
+
+## Log levels
+- `:debug`: Database queries
+- `:info`: All less database request: for example Request/render details
+- `:warn`: Deprecations, Standard errors and fatal errors
+- `:error`: Standard errors and Fatal errors
+- `:fatal`: Fatal errors
+
+## Clear Log Files
+```shell
+rails log:clear
+```
+
+## Insert data into log file
+```ruby
+# Debug level
+logger.debug("The name is #{@subject.name}")
+# Info level
+logger.info("Starting the subject update...")
+# Warning level
+logger.warn("Invalid log in by #{params[:username]}")
+# Error level
+logger.error("Page #{params[:id]} not found")
+# Fatal level
+logger.fatal("Necessary RubyGem not loaded")
+```
 
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/hello', to: 'main#hello'
 
   get '/login', to: 'access#new'
-  get '/logout', to: 'access#destroy'
+  delete '/logout', to: 'access#destroy'
 
   resource :access, controller: 'access', only: [:new, :create, :destroy] do
     member do

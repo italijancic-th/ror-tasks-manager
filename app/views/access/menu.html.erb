@@ -9,8 +9,9 @@
 <div class="access index">
   <h1>Menu</h1>
 
-  <p>Uaser: <%= @username %></p>
-  <p>User Id: <%= @user_id %></p>
+  <p> User: <%= @username %> - User Id: <%= @user_id %> </p>
+
+  <%= button_to 'Logout', logout_path, {method: 'delete'} %>
 
   <ul>
     <li><%= link_to('Manage Tasks', tasks_path) %></li>
