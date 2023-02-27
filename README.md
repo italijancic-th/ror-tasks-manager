@@ -268,4 +268,22 @@ Rails by default config sessions file for us:
 - This config files include data to encrypt and digitally sign cookies
 - Keep master key secret (listed in .gitignore by default)
 
+## Flash Hash
+- Stores a message in session data
+- Use for message needed after a redirect
+- Store text, not objects or other data
+- Clear old messages after every request
+
+Some examples of **Flash Hash** messages are:
+
+```ruby
+# Success flash
+flash[:notice] = 'Product created successfully.'
+# Error flash
+flash[:error] = 'Category could not be found.'
+# Alert flash
+flash[:alert] = 'Not enough access privileges.'
+```
+
+
 
