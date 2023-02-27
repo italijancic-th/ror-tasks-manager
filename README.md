@@ -361,3 +361,41 @@ send_file('/path/to/file.html')
 # Render to string
 render_to_string(file: '/path/to/file.html')
 ```
+
+## Capture Content
+```ruby
+content_for(name, content)
+
+content_for?(name)
+```
+
+# Add Style Sheets
+We have different options at time to work with statics style sheets:
+- Static style sheet in public directory `/public/stylesheets`
+- Asset pipelines
+
+## Asset pipeline benefits
+- Concatenate style sheet files
+- Precompile CSS
+- Compresses and minifies files
+- Allows writing styles in other languages
+- Adds asset fingerprinting
+
+### Write statics style sheets
+- Location: `app/assets/stylesheets`
+- File name should end in `.css` 
+
+### Style sheets in asset pipeline
+- Asset precompile `list include manifest`
+- **Manifest file** includes style sheets
+- Style sheet link tag loads the compiled style sheet in the HTML page
+- Precompile assets for deployment
+
+
+### Precompile Assets for Production
+```shell
+export RAILS_ENV=production
+
+bundle exec rails assets:precompile
+```
+
