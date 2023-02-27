@@ -5,11 +5,13 @@
 
   <%= link_to('Add new Task', new_task_path) %>
 
+<!--  <table class="listing" summary="Task list" style="width: 400px;">-->
   <table>
     <tr>
       <th>#</th>
       <th>Task</th>
       <th>Completed</th>
+      <th>Description</th>
       <th>Category</th>
       <th>Actions</th>
     </tr>
@@ -19,6 +21,7 @@
         <td><%= task.position %></td>
         <td><%= task.name %></td>
         <td><%= task.completed? ? 'Yes' : 'No' %></td>
+        <td><%= truncate(task.description, length: 25) %></td>
         <td><%= task.category&.name || '-' %></td>
         <td class='actions'><%= task.position %>
           <%= link_to('Show', task_path(task.id)) %>

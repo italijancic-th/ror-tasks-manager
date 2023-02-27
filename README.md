@@ -399,3 +399,33 @@ export RAILS_ENV=production
 bundle exec rails assets:precompile
 ```
 
+# Add images
+We have two ways to add images to our source code:
+- Static images in public directory `public/images`
+- Asset pipeline
+
+## Benefits of wor with images in assets pipeline
+- Assets pipeline makes easy for helper methods to find images
+- Performs asset fingerprinting
+- Location: `app/assets/images`
+
+## Image Helpers
+```html
+# We can add our image in the template with the html tag
+<image src="/assets/logo.png"/>
+```
+Or rails helpers
+```erbruby
+<%= image_tag('logo.png') %>
+<%= image_tag('logo.png', size: '90x55', alt: 'logo') %>
+<%= image_tag('logo.png', width: 90, height: 55) %>
+```
+
+# Helpers
+- `word_wrap`
+- `simple_format(text)`
+- `truncate(text, {lenght:28})`
+- `pluralize`
+- 
+
+

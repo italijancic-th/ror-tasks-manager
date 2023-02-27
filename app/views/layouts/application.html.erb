@@ -13,8 +13,14 @@
 
   <body>
 
+<!--    <header style="background-image: url('<%#= image_path('gradient.png') %>')">-->
     <header>
-      Task Manager
+      <%#= link_to menu_access_path do %>
+        <%#= image_tag 'task_manager_logo.png' %>
+      <%# end %>
+
+      <%= link_to image_tag('task_manager_logo.png'), menu_access_path %>
+
       <% if session[:user_id].present? %>
         <span>
           User: <%= @username %> | <%= button_to 'Logout', logout_path, {method: :delete} %>
