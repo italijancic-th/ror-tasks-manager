@@ -318,4 +318,46 @@ logger.error("Page #{params[:id]} not found")
 logger.fatal("Necessary RubyGem not loaded")
 ```
 
+## Controller filter
+There are tree types
+- `before_action`
+- `after_action`
+- `around_action`: Execute a code before and after the action method inside a controller
 
+# Render and Redirect
+- An action may only call render or redirect **once**
+- `Render` does not immediately render; it sets the template to be rendered
+- `Redirect` does not immediately redirect; it sets a value in the HTTP response
+- `Render` and `redirect` do not terminate the action
+
+## Render types
+```ruby
+# Render template by name
+render('show')
+
+# Render partial
+render(partial: 'form', locals: {})
+
+# Render plain text
+render(plain: 'Just render text')
+# Plain message and status code for HTTP request
+render(plain: 'OK', status: 200)
+
+# Render html
+render(html: '<strong>HTML text</strong>')
+
+# Render json (render a hash or ruby object)
+render(json: @customer)
+
+# Render xml
+render(xml: %w[cat dog mouse])
+
+# Render a file
+render(file: '/path/to/file.html')
+
+# Send file - to download a file 
+send_file('/path/to/file.html')
+
+# Render to string
+render_to_string(file: '/path/to/file.html')
+```

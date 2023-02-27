@@ -1,12 +1,28 @@
 class AccessController < ApplicationController
-  # display menu
+
+  skip_before_action :confirm_logged_in, only: [:new, :create]
+
+  # Display menu
   def menu
-    parse_user_info_from_session
+    # Examples of render options
+    # render('menu')
+    # render(plain: 'Just render a plain text')
+    # render(html: "<h1> HTML text </h1>")
+    # render(json: Task.first)
+    # render(xml: %w[dog cat mouse])
+    # render(plain: 'OK', status: 200)
+    # path_to_404 = Rails.root.join('public', '404.html')
+    # Render file
+    # render(file: path_to_404)
+    #
+    # Send file, so user can download it
+    # send_file(path_to_404)
+    # string = render_to_string(file: path_to_404)
+    # logger.debug(string)
   end
 
   # Display login form
   def new
-    parse_user_info_from_session
     if logged_in?
       redirect_to menu_access_path
     end
