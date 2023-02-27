@@ -1,5 +1,6 @@
 class AccessController < ApplicationController
 
+  layout 'application'
   skip_before_action :confirm_logged_in, only: [:new, :create]
 
   # Display menu
