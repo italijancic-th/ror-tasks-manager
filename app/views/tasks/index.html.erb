@@ -20,7 +20,7 @@
       <tr>
         <td><%= task.position %></td>
         <td><%= task.name %></td>
-        <td><%= task.completed? ? 'Yes' : 'No' %></td>
+        <td><%= status_tag(task.completed?) %></td>
         <td><%= truncate(task.description, length: 25) %></td>
         <td><%= task.category&.name || '-' %></td>
         <td class='actions'><%= task.position %>
