@@ -452,4 +452,7 @@ Characteristics:
 - Can affect the values and behaviors of the methods
 
 ## Validations
-
+- This are like rules defined in models that data must complain
+- Ensure data meets requirements before saving to database
+- Validation code resides in models
+- **Failed validations:** record will not save, will track errors
