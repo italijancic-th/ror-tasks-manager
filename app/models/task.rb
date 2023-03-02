@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 class Task < ApplicationRecord
+
+  attr_accessor :skip_titleize_name
+
   belongs_to :category, optional: true
+  has_and_belongs_to_many :tags
+  has_many :task_assignaments
+  has_many :users, through: :task_assignaments
 
   validates_presence_of :name
   validates_length_of :name, maximum: 50
@@ -10,13 +16,23 @@ class Task < ApplicationRecord
   # Custom validator
   validate :description_has_no_prohibited_words
 
+  # Callbacks/Custom hooks
+  before_validation :titleize_name, unless: :skip_titleize_name
+  # Other conditional callback execution
+  before_validation :set_default_position, if: proc { |t| t.position.blank? || t.position < 1 }
+  before_create :log_create
+  before_update :log_update
+  after_save :log_save
+  # Conditional callback execution
+  after_commit :cleaning_reminder, if: :too_many_records?
+
   scope :complete, -> { where(completed: true) }
   scope :incomplete, -> { where(completed: false) }
   scope :sorted, -> { order(:position) }
   scope :search, ->(kw) { where("LOWER(name) LIKE ?", "%#{kw.downcase}%") }
 
   private
-  
+
   def description_has_no_prohibited_words
     return unless description.present?
     prohibited_words = ['later', 'eventually', 'someday']
@@ -25,6 +41,40 @@ class Task < ApplicationRecord
         errors.add(:description, "cannot contain prohibited word: #{word}")
       end
     end
+  end
+
+  def titleize_name
+    # Upper case first letter
+    self.name = name.titleize
+  end
+
+  def set_default_position
+    if position.blank? || position < 1
+      max = Task.maximum(:position) || 0
+      self.position = max + 1
+    end
+  end
+
+  def log_create
+    logger.debug("Task being created: #{name}")
+  end
+
+  def log_update
+    logger.debug("Task being updated: #{name}")
+  end
+
+  def log_save
+    # runs on both create & update
+    logger.debug("Task was saved: #{name}")
+  end
+
+  def cleaning_reminder
+    # This could be a placeholder for sending an email to an admin
+    logger.debug("Remember to prune old tasks")
+  end
+
+  def too_many_records?
+    Task.count > 4
   end
 
 end

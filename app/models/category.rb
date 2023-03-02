@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 class Category < ApplicationRecord
 
-  has_many :tasks
+  # For dependent we use nullify, because category is an optional on task
+  has_many :tasks, dependent: :nullify
 
   validates_length_of :name, within: 2..50
 
